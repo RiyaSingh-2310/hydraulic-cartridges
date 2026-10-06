@@ -1,0 +1,826 @@
+{
+  "company": {
+    "name": "Hydraulic Cartridges",
+    "tagline": "Precision fluid power, manufactured with intent.",
+    "email": "care@hydraulic-cartridges.com",
+    "phone": "(+91) 7007891857",
+    "address": "Manufacturing address — placeholder pending official listing",
+    "hours": "Engineering desk hours — placeholder",
+    "iso": "ISO 9001 compliant manufacturing (as published on hydraulic-cartridges.com)",
+    "pressureClass": "350 bar continuous operating class"
+  },
+  "navLinks": [
+    {
+      "label": "Home",
+      "to": "/",
+      "end": true
+    },
+    {
+      "label": "Products",
+      "to": "/products"
+    },
+    {
+      "label": "Solutions",
+      "to": "/applications"
+    },
+    {
+      "label": "About",
+      "to": "/about"
+    },
+    {
+      "label": "Resources",
+      "to": "/resources"
+    },
+    {
+      "label": "Contact",
+      "to": "/contact"
+    }
+  ],
+  "capabilities": [
+    {
+      "index": "01",
+      "title": "Precision Manufacturing",
+      "description": "Cavity geometry, threads, and sealing lands are machined to tight industrial tolerances so cartridges seat consistently in OEM manifolds."
+    },
+    {
+      "index": "02",
+      "title": "Engineering Support",
+      "description": "Application engineers review pressure, flow, duty cycle, and envelope before recommending a catalog cartridge or a custom path."
+    },
+    {
+      "index": "03",
+      "title": "Custom Solutions",
+      "description": "When ISO cavities cannot meet the circuit, we develop hybrid cavities, special porting, and integrated manifold functions."
+    },
+    {
+      "index": "04",
+      "title": "Quality Control",
+      "description": "Dimensional checks and documented inspection points sit in the manufacturing sequence, not only at the end of the line."
+    },
+    {
+      "index": "05",
+      "title": "Testing & Validation",
+      "description": "Functional pressure, leakage, and shift tests are specified for the catalog range. Custom circuits receive application-specific validation."
+    },
+    {
+      "index": "06",
+      "title": "Global Supply Intent",
+      "description": "The commercial model is direct-from-manufacturer supply for industrial OEMs and machinery builders. Logistics details are confirmed at quotation."
+    }
+  ],
+  "resources": [
+    {
+      "slug": "catalog",
+      "title": "Product Catalog",
+      "description": "Overview of cartridge families, cavities, and typical operating ranges.",
+      "type": "PDF · Placeholder"
+    },
+    {
+      "slug": "documentation",
+      "title": "Technical Documentation",
+      "description": "Installation notes, cavity drawings, and recommended torque values.",
+      "type": "Library · Placeholder"
+    },
+    {
+      "slug": "specifications",
+      "title": "Product Specifications",
+      "description": "Pressure, flow, seal, and material data for each published series.",
+      "type": "Data · Placeholder"
+    },
+    {
+      "slug": "guides",
+      "title": "Application Guides",
+      "description": "Selection notes for load holding, relief, flow, and directional circuits.",
+      "type": "Guide · Placeholder"
+    },
+    {
+      "slug": "faq",
+      "title": "FAQs",
+      "description": "Cavity compatibility, fluids, coil voltages, and quotation requirements.",
+      "type": "Reference"
+    },
+    {
+      "slug": "engineering",
+      "title": "Contact Engineering",
+      "description": "Send cavity files, duty cycle, and target envelope for a technical review.",
+      "type": "Desk"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do you manufacture to ISO cavities?",
+      "answer": "Catalog cartridges are specified around ISO and SAE cavity families, with custom cavity work when the envelope requires it. Confirm the cavity code on the product page before specifying."
+    },
+    {
+      "question": "What operating pressure should designers assume?",
+      "answer": "The published industrial class on the existing brand site is 350 bar continuous. Individual series may be rated lower; use the product specification table as the design source."
+    },
+    {
+      "question": "Can you quote from CAD?",
+      "answer": "Yes. The request-a-quote flow accepts a description of the application now. File upload will be connected in a later phase; until then, reference drawings in the message field."
+    },
+    {
+      "question": "Is this website connected to live inventory?",
+      "answer": "No. This frontend uses structured mock catalog data so the experience can be reviewed visually. Commercial availability is confirmed during quotation."
+    }
+  ],
+  "images": {
+    "hero": {
+      "src": "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=2200&q=80",
+      "alt": "CNC machining of a precision metal component in an industrial cell"
+    },
+    "intro": {
+      "src": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Engineer inspecting a precision-machined industrial assembly"
+    },
+    "quality": {
+      "src": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2000&q=80",
+      "alt": "Close inspection of machined metal parts during quality control"
+    },
+    "machining": {
+      "src": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1600&q=80",
+      "alt": "Industrial metal fabrication with sparks from hot-worked steel"
+    },
+    "testing": {
+      "src": "https://images.unsplash.com/photo-1581094794329-cdc91d0d8c56?auto=format&fit=crop&w=1600&q=80",
+      "alt": "Industrial production floor with automated manufacturing equipment"
+    },
+    "about": {
+      "src": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=80",
+      "alt": "Large-scale industrial manufacturing facility"
+    },
+    "metal": {
+      "src": "https://images.unsplash.com/photo-1565433225852-e0e86d4c5c0e?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Precision milled metal component on a machining table"
+    }
+  },
+  "products": [
+    {
+      "slug": "screw-in-cartridge-valves",
+      "name": "Screw-in Cartridge Valves",
+      "model": "HCV-SC Series",
+      "category": "Cartridge Valves",
+      "categorySlug": "cartridge",
+      "shortDescription": "Compact screw-in valves engineered for ISO and custom cavities in high-duty manifolds.",
+      "overview": "The HCV-SC series is designed for OEMs who need dense hydraulic circuits without sacrificing serviceability. Each cartridge is machined, assembled, and functionally tested for continuous-duty industrial pressure.",
+      "pressure": "350 bar",
+      "flow": "Up to 80 L/min",
+      "cavity": "ISO / custom",
+      "visual": "cartridge",
+      "galleryCaptions": [
+        "HCV-SC screw-in cartridge body",
+        "Cavity interface machining",
+        "Functional pressure test fixture"
+      ],
+      "features": [
+        "Zero-leak poppet and spool options",
+        "Hardened steel internal components",
+        "ISO cavity compatibility with custom options",
+        "Stable response under continuous high-duty cycles"
+      ],
+      "technical": [
+        {
+          "label": "Max. operating pressure",
+          "value": "350 bar (5,075 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 80 L/min"
+        },
+        {
+          "label": "Cavity",
+          "value": "ISO 7789 and custom"
+        },
+        {
+          "label": "Temperature range",
+          "value": "−30 °C to +100 °C"
+        },
+        {
+          "label": "Seals",
+          "value": "NBR / FKM options"
+        },
+        {
+          "label": "Body material",
+          "value": "High-strength steel"
+        }
+      ],
+      "applications": [
+        "Mobile Hydraulics",
+        "Industrial Automation",
+        "Manufacturing"
+      ],
+      "relatedSlugs": [
+        "solenoid-cartridge-valves",
+        "relief-valves",
+        "custom-hydraulic-solutions"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "solenoid-cartridge-valves",
+      "name": "Solenoid Cartridge Valves",
+      "model": "HCV-SV Series",
+      "category": "Solenoid Valves",
+      "categorySlug": "solenoid",
+      "shortDescription": "Electrically actuated cartridges for precise on/off and directional control in compact manifolds.",
+      "overview": "HCV-SV solenoid cartridges combine wet-armature coils with hardened seats for reliable shifting in mobile and industrial circuits. Coil options support common industrial voltages.",
+      "pressure": "315 bar",
+      "flow": "Up to 60 L/min",
+      "cavity": "SAE / ISO",
+      "visual": "solenoid",
+      "galleryCaptions": [
+        "Solenoid cartridge with coil assembly",
+        "Coil and armature detail",
+        "Manifold-mounted solenoid group"
+      ],
+      "features": [
+        "Wet-armature solenoid design",
+        "12 V, 24 V, and 110/220 V coil options",
+        "Manual override available",
+        "Low leakage poppet construction"
+      ],
+      "technical": [
+        {
+          "label": "Max. operating pressure",
+          "value": "315 bar (4,570 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 60 L/min"
+        },
+        {
+          "label": "Response",
+          "value": "Fast-shift industrial duty"
+        },
+        {
+          "label": "Protection",
+          "value": "IP65 coil options"
+        },
+        {
+          "label": "Voltage",
+          "value": "12 / 24 VDC, 110 / 220 VAC"
+        },
+        {
+          "label": "Duty cycle",
+          "value": "Continuous"
+        }
+      ],
+      "applications": [
+        "Material Handling",
+        "Specialized Machinery",
+        "Industrial Automation"
+      ],
+      "relatedSlugs": [
+        "screw-in-cartridge-valves",
+        "directional-valves",
+        "flow-control-valves"
+      ]
+    },
+    {
+      "slug": "check-valves",
+      "name": "Check Valves",
+      "model": "HCV-CK Series",
+      "category": "Check Valves",
+      "categorySlug": "check",
+      "shortDescription": "Low-leakage check cartridges that protect circuits and hold load with consistent cracking pressure.",
+      "overview": "HCV-CK check valves are built for repeatable sealing in load-holding and isolation circuits. Poppet geometry is optimized for low pressure drop while remaining tight at rest.",
+      "pressure": "350 bar",
+      "flow": "Up to 120 L/min",
+      "cavity": "ISO cavity",
+      "visual": "check",
+      "galleryCaptions": [
+        "Poppet-style check cartridge",
+        "Seat and poppet machining",
+        "Leak test station"
+      ],
+      "features": [
+        "Hardened poppet and seat",
+        "Defined cracking pressure options",
+        "Low pressure drop at rated flow",
+        "Pilot-to-open variants available"
+      ],
+      "technical": [
+        {
+          "label": "Max. operating pressure",
+          "value": "350 bar (5,075 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 120 L/min"
+        },
+        {
+          "label": "Cracking pressure",
+          "value": "0.5 / 1 / 3 / 5 bar"
+        },
+        {
+          "label": "Leakage",
+          "value": "Near-zero at rated pressure"
+        },
+        {
+          "label": "Mounting",
+          "value": "Screw-in cartridge"
+        },
+        {
+          "label": "Fluid",
+          "value": "Mineral oil, compatible synthetics"
+        }
+      ],
+      "applications": [
+        "Construction Equipment",
+        "Energy",
+        "Manufacturing"
+      ],
+      "relatedSlugs": [
+        "counterbalance-valves",
+        "relief-valves",
+        "screw-in-cartridge-valves"
+      ]
+    },
+    {
+      "slug": "relief-valves",
+      "name": "Relief Valves",
+      "model": "HCV-RV Series",
+      "category": "Pressure Control",
+      "categorySlug": "relief",
+      "shortDescription": "Direct-acting and pilot-operated relief cartridges for stable system pressure protection.",
+      "overview": "HCV-RV relief valves are specified where pressure must remain stable through load spikes. Direct-acting units serve compact circuits; pilot-operated designs handle higher flow with low override.",
+      "pressure": "350 bar",
+      "flow": "Up to 150 L/min",
+      "cavity": "ISO / SAE",
+      "visual": "relief",
+      "galleryCaptions": [
+        "Adjustable relief cartridge",
+        "Spring and spool assembly",
+        "Pressure override test"
+      ],
+      "features": [
+        "Direct-acting and pilot-operated options",
+        "Tamper-resistant adjustment",
+        "Low hysteresis pressure control",
+        "Optional vent and remote control ports"
+      ],
+      "technical": [
+        {
+          "label": "Max. setting",
+          "value": "350 bar (5,075 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 150 L/min"
+        },
+        {
+          "label": "Adjustment",
+          "value": "Screw with lock nut"
+        },
+        {
+          "label": "Override",
+          "value": "Low-override pilot designs"
+        },
+        {
+          "label": "Repeatability",
+          "value": "Industrial continuous duty"
+        },
+        {
+          "label": "Cavity",
+          "value": "ISO / SAE"
+        }
+      ],
+      "applications": [
+        "Industrial Automation",
+        "Energy",
+        "Specialized Machinery"
+      ],
+      "relatedSlugs": [
+        "flow-control-valves",
+        "check-valves",
+        "custom-hydraulic-solutions"
+      ]
+    },
+    {
+      "slug": "flow-control-valves",
+      "name": "Flow Control Valves",
+      "model": "HCV-FC Series",
+      "category": "Flow Control",
+      "categorySlug": "flow",
+      "shortDescription": "Needle, pressure-compensated, and priority flow cartridges for controlled actuator speed.",
+      "overview": "HCV-FC flow controls keep actuator velocity predictable as load changes. Compensated designs maintain set flow independent of downstream pressure within the rated window.",
+      "pressure": "315 bar",
+      "flow": "Up to 90 L/min",
+      "cavity": "ISO cavity",
+      "visual": "flow",
+      "galleryCaptions": [
+        "Pressure-compensated flow cartridge",
+        "Needle adjustment detail",
+        "Flow bench verification"
+      ],
+      "features": [
+        "Pressure-compensated and needle options",
+        "Fine-thread adjustment",
+        "Priority and bypass configurations",
+        "Stable metering at low flow"
+      ],
+      "technical": [
+        {
+          "label": "Max. operating pressure",
+          "value": "315 bar (4,570 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 90 L/min"
+        },
+        {
+          "label": "Compensation",
+          "value": "Load-independent (compensated models)"
+        },
+        {
+          "label": "Adjustment",
+          "value": "Graduated knob / screw"
+        },
+        {
+          "label": "Reverse free flow",
+          "value": "Optional check path"
+        },
+        {
+          "label": "Cavity",
+          "value": "ISO"
+        }
+      ],
+      "applications": [
+        "Agriculture",
+        "Mobile Hydraulics",
+        "Material Handling"
+      ],
+      "relatedSlugs": [
+        "relief-valves",
+        "solenoid-cartridge-valves",
+        "directional-valves"
+      ]
+    },
+    {
+      "slug": "directional-valves",
+      "name": "Directional Valves",
+      "model": "HCV-DV Series",
+      "category": "Directional Control",
+      "categorySlug": "directional",
+      "shortDescription": "Two-, three-, and four-way cartridge spools for compact directional control inside the manifold.",
+      "overview": "HCV-DV directional cartridges reduce hose runs by placing function control inside the block. Spool and poppet logics cover motor, cylinder, and regenerative circuits.",
+      "pressure": "315 bar",
+      "flow": "Up to 70 L/min",
+      "cavity": "SAE / ISO",
+      "visual": "directional",
+      "galleryCaptions": [
+        "Four-way directional cartridge",
+        "Spool land precision grind",
+        "Circuit manifold example"
+      ],
+      "features": [
+        "2-way, 3-way, and 4-way logics",
+        "Solenoid, pneumatic, and manual pilots",
+        "Soft-shift options for smoother motion",
+        "Compact multi-function stacking in one block"
+      ],
+      "technical": [
+        {
+          "label": "Max. operating pressure",
+          "value": "315 bar (4,570 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 70 L/min"
+        },
+        {
+          "label": "Ways / positions",
+          "value": "2/2, 3/2, 4/2, 4/3"
+        },
+        {
+          "label": "Actuation",
+          "value": "Solenoid / pilot / manual"
+        },
+        {
+          "label": "Spool leakage",
+          "value": "Application-dependent"
+        },
+        {
+          "label": "Cavity",
+          "value": "SAE / ISO"
+        }
+      ],
+      "applications": [
+        "Mobile Hydraulics",
+        "Construction Equipment",
+        "Specialized Machinery"
+      ],
+      "relatedSlugs": [
+        "solenoid-cartridge-valves",
+        "screw-in-cartridge-valves",
+        "flow-control-valves"
+      ]
+    },
+    {
+      "slug": "counterbalance-valves",
+      "name": "Counterbalance Valves",
+      "model": "HCV-CB Series",
+      "category": "Load Control",
+      "categorySlug": "counterbalance",
+      "shortDescription": "Load-holding counterbalance cartridges for controlled lowering and overrunning loads.",
+      "overview": "HCV-CB valves protect actuators from runaway motion. Pilot ratios and relief settings are selected to match cylinder area ratios and machine dynamics.",
+      "pressure": "350 bar",
+      "flow": "Up to 100 L/min",
+      "cavity": "ISO cavity",
+      "visual": "counterbalance",
+      "galleryCaptions": [
+        "Counterbalance cartridge assembly",
+        "Pilot piston and relief seat",
+        "Load-holding validation"
+      ],
+      "features": [
+        "Multiple pilot ratios",
+        "Integrated relief and check",
+        "Stable lowering without chatter",
+        "Tamper-resistant setting"
+      ],
+      "technical": [
+        {
+          "label": "Max. operating pressure",
+          "value": "350 bar (5,075 psi)"
+        },
+        {
+          "label": "Rated flow",
+          "value": "Up to 100 L/min"
+        },
+        {
+          "label": "Pilot ratios",
+          "value": "3:1, 4.5:1, 8:1 typical"
+        },
+        {
+          "label": "Function",
+          "value": "Relief + check + pilot open"
+        },
+        {
+          "label": "Adjustment",
+          "value": "Screw with lock"
+        },
+        {
+          "label": "Cavity",
+          "value": "ISO"
+        }
+      ],
+      "applications": [
+        "Construction Equipment",
+        "Material Handling",
+        "Mobile Hydraulics"
+      ],
+      "relatedSlugs": [
+        "check-valves",
+        "relief-valves",
+        "screw-in-cartridge-valves"
+      ]
+    },
+    {
+      "slug": "custom-hydraulic-solutions",
+      "name": "Custom Hydraulic Solutions",
+      "model": "HCV-CX Program",
+      "category": "Custom Engineering",
+      "categorySlug": "custom",
+      "shortDescription": "Application-specific cartridges, cavities, and manifold circuits built from your operating envelope.",
+      "overview": "When a catalog cavity cannot meet envelope, duty, or integration requirements, the HCV-CX program develops custom cartridges and manifold circuits. Engineering reviews CAD, duty cycle, and fluid conditions before quoting.",
+      "pressure": "Up to 350 bar",
+      "flow": "Circuit dependent",
+      "cavity": "Custom / ISO hybrid",
+      "visual": "custom",
+      "galleryCaptions": [
+        "Custom manifold and cartridge set",
+        "Cavity development from CAD",
+        "Prototype functional validation"
+      ],
+      "features": [
+        "Custom cavity and porting",
+        "Integrated multi-function blocks",
+        "Prototype-to-production support",
+        "Material and seal specification for duty"
+      ],
+      "technical": [
+        {
+          "label": "Pressure class",
+          "value": "Up to 350 bar continuous"
+        },
+        {
+          "label": "Materials",
+          "value": "Steel / aluminum manifolds"
+        },
+        {
+          "label": "Input",
+          "value": "CAD, cavity spec, duty cycle"
+        },
+        {
+          "label": "Validation",
+          "value": "Functional and leak testing"
+        },
+        {
+          "label": "Documentation",
+          "value": "Application drawings (placeholder)"
+        },
+        {
+          "label": "Lead path",
+          "value": "Engineering review then quotation"
+        }
+      ],
+      "applications": [
+        "Specialized Machinery",
+        "Energy",
+        "Manufacturing"
+      ],
+      "relatedSlugs": [
+        "screw-in-cartridge-valves",
+        "directional-valves",
+        "solenoid-cartridge-valves"
+      ]
+    }
+  ],
+  "applications": [
+    {
+      "slug": "mobile-hydraulics",
+      "name": "Mobile Hydraulics",
+      "shortDescription": "Compact cartridges for vehicle-mounted systems that must hold pressure, shift cleanly, and survive vibration.",
+      "overview": "Mobile equipment demands dense manifolds, consistent valve response, and sealing that holds through shock and temperature swing. Cartridge architecture keeps circuits serviceable in the field.",
+      "challenges": [
+        "Space-constrained vehicle frames",
+        "Shock, vibration, and duty-cycle heat",
+        "Service access in the field"
+      ],
+      "solutions": [
+        "Screw-in cartridges in compact steel blocks",
+        "Solenoid and load-holding functions grouped by circuit",
+        "Seal and material options for outdoor duty"
+      ],
+      "typicalProducts": [
+        "screw-in-cartridge-valves",
+        "solenoid-cartridge-valves",
+        "counterbalance-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Heavy industrial metalwork associated with mobile equipment manufacturing"
+    },
+    {
+      "slug": "industrial-automation",
+      "name": "Industrial Automation",
+      "shortDescription": "Repeatable pressure and directional control for presses, fixtures, and automated production cells.",
+      "overview": "Automated plants need valves that repeat the same motion thousands of times per shift. Cartridge manifolds reduce leak points and keep hydraulic logic close to the actuator.",
+      "challenges": [
+        "Cycle-to-cycle repeatability",
+        "Leak-free continuous operation",
+        "Integration with electrical controls"
+      ],
+      "solutions": [
+        "Solenoid cartridges matched to industrial voltages",
+        "Relief and flow functions for stable process pressure",
+        "Custom blocks for fixture and press circuits"
+      ],
+      "typicalProducts": [
+        "solenoid-cartridge-valves",
+        "relief-valves",
+        "flow-control-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1581094794329-cdc91d0d8c56?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Automated industrial production environment"
+    },
+    {
+      "slug": "agriculture",
+      "name": "Agriculture",
+      "shortDescription": "Durable flow and directional control for implements, steering, and auxiliary hydraulic functions.",
+      "overview": "Agricultural machines combine long idle periods with sudden high-load work. Valve selection focuses on contamination tolerance, simple service, and predictable implement speed.",
+      "challenges": [
+        "Dust and fluid contamination",
+        "Seasonal duty followed by storage",
+        "Multiple implement circuits"
+      ],
+      "solutions": [
+        "Flow control for implement speed",
+        "Check and relief protection on shared pumps",
+        "Cartridge replacement without re-plumbing the machine"
+      ],
+      "typicalProducts": [
+        "flow-control-valves",
+        "check-valves",
+        "directional-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Agricultural machinery operating in the field"
+    },
+    {
+      "slug": "construction-equipment",
+      "name": "Construction Equipment",
+      "shortDescription": "Load-holding and pressure protection for booms, outriggers, and high-inertia work functions.",
+      "overview": "Construction hydraulics move heavy, overrunning loads. Counterbalance and relief cartridges are specified to keep motion controlled when gravity assists the actuator.",
+      "challenges": [
+        "Overrunning and over-center loads",
+        "Peak pressure spikes",
+        "Rugged outdoor service"
+      ],
+      "solutions": [
+        "Counterbalance valves matched to cylinder ratios",
+        "Relief protection at 350 bar class",
+        "Hardened internals for abrasive duty"
+      ],
+      "typicalProducts": [
+        "counterbalance-valves",
+        "relief-valves",
+        "screw-in-cartridge-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Construction equipment on an active job site"
+    },
+    {
+      "slug": "material-handling",
+      "name": "Material Handling",
+      "shortDescription": "Smooth lift, lower, and auxiliary control for warehouse and yard handling equipment.",
+      "overview": "Material handling systems need quiet, controlled motion and reliable load holding at rest. Cartridge valves keep lift circuits compact inside the vehicle or station manifold.",
+      "challenges": [
+        "Smooth lowering under varying load",
+        "Energy-efficient idle",
+        "High daily cycle counts"
+      ],
+      "solutions": [
+        "Load-holding check and counterbalance functions",
+        "Solenoid directional control for auxiliaries",
+        "Compensated flow for consistent lift speed"
+      ],
+      "typicalProducts": [
+        "counterbalance-valves",
+        "solenoid-cartridge-valves",
+        "flow-control-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Industrial warehouse with material handling infrastructure"
+    },
+    {
+      "slug": "energy",
+      "name": "Energy",
+      "shortDescription": "Pressure-stable cartridges for power generation auxiliaries, test stands, and process hydraulics.",
+      "overview": "Energy applications often combine high pressure with long hold times. Valve leakage, seal selection, and documented test results matter as much as catalog flow ratings.",
+      "challenges": [
+        "Long-duration pressure holding",
+        "Safety-critical relief behavior",
+        "Traceable quality documentation"
+      ],
+      "solutions": [
+        "Low-leakage check and relief cartridges",
+        "Functional testing on every unit in this catalog range",
+        "Custom manifolds for auxiliary power units"
+      ],
+      "typicalProducts": [
+        "relief-valves",
+        "check-valves",
+        "custom-hydraulic-solutions"
+      ],
+      "image": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Electrical transmission infrastructure representing energy applications"
+    },
+    {
+      "slug": "manufacturing",
+      "name": "Manufacturing",
+      "shortDescription": "Integrated hydraulic circuits for machine tools, forming equipment, and plant machinery.",
+      "overview": "Manufacturing OEMs specify cartridges to shorten machine build time and keep spares standardized. Custom blocks consolidate clamps, counters, and pressure sequences.",
+      "challenges": [
+        "Dense function count in a small envelope",
+        "Standardized spare parts",
+        "Clean, leak-minimized machine design"
+      ],
+      "solutions": [
+        "Multi-cavity manifolds from CAD",
+        "Standard screw-in families across machine lines",
+        "Flow and directional logic inside the block"
+      ],
+      "typicalProducts": [
+        "custom-hydraulic-solutions",
+        "directional-valves",
+        "screw-in-cartridge-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "CNC manufacturing cell producing precision metal parts"
+    },
+    {
+      "slug": "specialized-machinery",
+      "name": "Specialized Machinery",
+      "shortDescription": "Application-engineered cartridges and cavities when standard catalog geometry is not enough.",
+      "overview": "Specialized machines often need unique porting, uncommon flow paths, or hybrid ISO/custom cavities. Engineering collaboration starts with the duty cycle, not a part number.",
+      "challenges": [
+        "Non-standard envelopes",
+        "Mixed functions in one cartridge",
+        "Prototype iteration before production"
+      ],
+      "solutions": [
+        "Custom cavity development",
+        "Prototype testing and revision",
+        "Production cartridges matched to the approved circuit"
+      ],
+      "typicalProducts": [
+        "custom-hydraulic-solutions",
+        "directional-valves",
+        "solenoid-cartridge-valves"
+      ],
+      "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=80",
+      "imageAlt": "Specialized precision assembly being inspected in an engineering environment"
+    }
+  ]
+}

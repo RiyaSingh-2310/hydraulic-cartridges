@@ -1,0 +1,13 @@
+/*
+Theme Name: Hydraulic Cartridges
+Theme URI: https://hydraulic-cartridges.com
+Author: Hydraulic Cartridges
+Description: Custom WordPress theme migrated from the approved React + Vite frontend. Visual design is preserved; do not restyle.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 8.0
+Text Domain: hydraulic-cartridges
+*/
+
+/* Front-end styles are enqueued from assets/css. This file is the theme identity sheet only. */

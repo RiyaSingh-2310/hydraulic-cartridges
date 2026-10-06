@@ -1,0 +1,123 @@
+/* WordPress compatibility + animation ports. Do not change the React design tokens. */
+
+html,
+body,
+.page-shell {
+  min-height: 100%;
+}
+
+body.page-shell {
+  margin: 0;
+}
+
+.wp-custom-logo .brand-mark {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-copy,
+  .hero-stats {
+    animation: none;
+  }
+}
+
+.hero-copy {
+  animation: hc-fade-up 0.7s var(--ease) both;
+}
+
+.hero-stats {
+  animation: hc-fade-up 0.7s 0.15s var(--ease) both;
+}
+
+@keyframes hc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-media {
+  will-change: transform, opacity;
+}
+
+.menu-layer {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.menu-layer.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.menu-backdrop {
+  opacity: 0;
+  transition: opacity 0.34s var(--ease);
+}
+
+.menu-layer.is-open .menu-backdrop {
+  opacity: 1;
+}
+
+.mobile-nav {
+  opacity: 0;
+  transform: translateY(-18px);
+  transition:
+    opacity 0.34s var(--ease),
+    transform 0.34s var(--ease);
+}
+
+.menu-layer.is-open .mobile-nav {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-backdrop,
+  .mobile-nav {
+    transition: none;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.admin-bar .site-header.overlay,
+.admin-bar .site-header.solid {
+  top: 32px;
+}
+
+@media (max-width: 782px) {
+  .admin-bar .site-header.overlay,
+  .admin-bar .site-header.solid {
+    top: 46px;
+  }
+}
