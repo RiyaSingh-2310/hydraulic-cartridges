@@ -161,14 +161,23 @@ function hc_render_products_mobile($item, $active) {
                         </button>
                         <div class="mobile-family-panel" hidden data-acc-panel>
                             <a href="<?php echo esc_url($range['url']); ?>">All <?php echo esc_html($range['name']); ?></a>
-                            <?php foreach ($range['children'] as $child) : ?>
-                                <a href="<?php echo esc_url($child['url']); ?>"><?php echo esc_html($child['name']); ?></a>
-                                <?php foreach ($child['products'] ?? array() as $product) : ?>
-                                    <a class="mobile-product-link" href="<?php echo esc_url($product['url']); ?>">
-                                        <?php echo esc_html($product['model'] ? $product['model'] . ' — ' : ''); ?><?php echo esc_html($product['name']); ?>
-                                    </a>
+                            <div class="mobile-subs" data-acc-multi>
+                                <?php foreach ($range['children'] as $child) : ?>
+                                    <div class="mobile-sub">
+                                        <button type="button" class="mobile-sub-toggle" aria-expanded="false" data-acc-toggle>
+                                            <?php echo esc_html($child['name']); ?>
+                                        </button>
+                                        <div class="mobile-sub-panel" hidden data-acc-panel>
+                                            <a href="<?php echo esc_url($child['url']); ?>">View <?php echo esc_html($child['name']); ?></a>
+                                            <?php foreach ($child['products'] ?? array() as $product) : ?>
+                                                <a class="mobile-product-link" href="<?php echo esc_url($product['url']); ?>">
+                                                    <?php echo esc_html($product['model'] ? $product['model'] . ' — ' : ''); ?><?php echo esc_html($product['name']); ?>
+                                                </a>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
                                 <?php endforeach; ?>
-                            <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -195,6 +204,7 @@ function hc_render_catalog_bar() {
                         <?php echo esc_html($range['name']); ?>
                     </a>
                     <div class="catalog-drop" role="region" aria-label="<?php echo esc_attr($range['name'] . ' groups'); ?>">
+                        <p class="catalog-drop-title"><?php echo esc_html($range['name']); ?></p>
                         <ul>
                             <?php foreach ($range['children'] as $child) : ?>
                                 <li>

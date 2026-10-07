@@ -21,6 +21,9 @@ export interface Product {
   applications: string[]
   relatedSlugs: string[]
   featured?: boolean
+  family?: string
+  familySlug?: string
+  groupSlug?: string
 }
 
 export type ProductVisualKind =

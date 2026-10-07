@@ -57,8 +57,11 @@ add_action('wp_enqueue_scripts', function () {
         'hc-commerce',
         'hcCommerce',
         array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce'   => wp_create_nonce('hc_commerce'),
+            'ajaxUrl'     => admin_url('admin-ajax.php'),
+            'nonce'       => wp_create_nonce('hc_commerce'),
+            'checkoutUrl' => hc_checkout_url(),
+            'productsUrl' => hc_products_url(),
+            'loggedIn'    => is_user_logged_in(),
         )
     );
 

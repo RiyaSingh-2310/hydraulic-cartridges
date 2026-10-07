@@ -71,6 +71,7 @@ function hc_upsert_family_term($item, $parent_id, $order) {
     $existing = get_term_by('slug', $item['slug'], hc_family_taxonomy());
     if ($existing && ! is_wp_error($existing)) {
         wp_update_term((int) $existing->term_id, hc_family_taxonomy(), array(
+            'name'        => $item['name'],
             'description' => $item['intro'] ?? '',
             'parent'      => $parent_id,
         ));

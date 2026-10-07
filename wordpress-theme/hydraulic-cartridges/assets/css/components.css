@@ -43,7 +43,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   body:has(.has-catalog-bar) .hero {
     min-height: calc(100dvh - var(--header-h) - var(--catalog-bar-h));
   }

@@ -23,11 +23,11 @@ if (! $tree) {
                     aria-expanded="<?php echo $open ? 'true' : 'false'; ?>"
                     data-acc-toggle
                 >
-                    <?php echo esc_html($parent->name); ?>
+                    <?php echo esc_html(hc_public_label($parent->name, $parent->slug)); ?>
                 </button>
                 <div class="sidebar-panel" <?php echo $open ? '' : 'hidden'; ?> data-acc-panel>
                     <a class="<?php echo $is_family && ! $current_group ? 'is-active' : ''; ?>" href="<?php echo esc_url(hc_family_link($parent)); ?>">
-                        All <?php echo esc_html($parent->name); ?>
+                        All <?php echo esc_html(hc_public_label($parent->name, $parent->slug)); ?>
                     </a>
                     <?php foreach ($branch['children'] as $child) : ?>
                         <?php $is_group = $current_group && (int) $current_group->term_id === (int) $child->term_id; ?>

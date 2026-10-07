@@ -1,6 +1,7 @@
 import type { Product } from '../types'
+import { catalogProducts, getCatalogProduct } from './catalog'
 
-export const products: Product[] = [
+const legacyProducts: Product[] = [
   {
     slug: 'screw-in-cartridge-valves',
     name: 'Screw-in Cartridge Valves',
@@ -296,8 +297,10 @@ export const products: Product[] = [
   },
 ]
 
+export const products: Product[] = catalogProducts
+
 export function getProduct(slug: string): Product | undefined {
-  return products.find((item) => item.slug === slug)
+  return getCatalogProduct(slug) ?? legacyProducts.find((item) => item.slug === slug)
 }
 
 export function getRelatedProducts(product: Product): Product[] {
@@ -306,4 +309,5 @@ export function getRelatedProducts(product: Product): Product[] {
     .filter((item): item is Product => Boolean(item))
 }
 
-export const featuredProduct = products.find((item) => item.featured) ?? products[0]
+export const featuredProduct: Product =
+  getCatalogProduct('hcv-hsp-20') ?? catalogProducts[0] ?? legacyProducts[0]

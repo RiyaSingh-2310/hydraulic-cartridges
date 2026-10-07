@@ -5,12 +5,7 @@
 
 get_header();
 $items = hc_cart_items();
-$proceed = is_user_logged_in()
-    ? add_query_arg('from', 'cart', hc_quote_url())
-    : hc_account_url(array(
-        'redirect_to' => add_query_arg('from', 'cart', hc_quote_url()),
-        'notice'      => 'login-cart',
-    ));
+$proceed = hc_checkout_url();
 
 hc_page_hero(
     'Catalog',
@@ -58,8 +53,8 @@ hc_page_hero(
                 <p><strong><?php echo esc_html((string) hc_cart_count()); ?></strong> line items · Total: quotation on request</p>
                 <p class="notice">This catalog does not take online payment. Checkout continues as a quotation request.</p>
                 <div class="cart-actions">
-                    <?php hc_btn(hc_products_url(), 'Continue shopping', 'outline'); ?>
-                    <?php hc_btn($proceed, is_user_logged_in() ? 'Proceed to request quote' : 'Proceed — sign in to continue'); ?>
+                    <?php hc_btn(hc_products_url(), 'Continue Shopping', 'outline'); ?>
+                    <?php hc_btn($proceed, 'Go to Checkout with My Cart'); ?>
                 </div>
             </aside>
         <?php endif; ?>

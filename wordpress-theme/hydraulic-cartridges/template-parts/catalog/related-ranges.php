@@ -15,7 +15,7 @@ if (! $tree) {
                 continue;
             }
             ?>
-            <a href="<?php echo esc_url(hc_family_link($term)); ?>"><?php echo esc_html($term->name); ?></a>
+            <a href="<?php echo esc_url(hc_family_link($term)); ?>"><?php echo esc_html(hc_public_label($term->name, $term->slug)); ?></a>
         <?php endforeach; ?>
     </div>
 </nav>

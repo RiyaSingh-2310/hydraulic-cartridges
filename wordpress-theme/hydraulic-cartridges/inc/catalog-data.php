@@ -155,7 +155,7 @@ function hc_catalog_blueprint() {
         ),
         array(
             'slug'   => 'specialities',
-            'name'   => 'Specialities',
+            'name'   => 'Specialties',
             'visual' => 'custom',
             'intro'  => 'Application-engineered manifolds, seal kits, actuators, and machine-specific control valves.',
             'children' => array(

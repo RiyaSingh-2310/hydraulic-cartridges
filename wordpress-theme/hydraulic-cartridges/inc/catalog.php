@@ -61,6 +61,14 @@ function hc_family_url_by_slug($slug) {
     return home_url(user_trailingslashit('products/' . ltrim($slug, '/')));
 }
 
+function hc_public_label($name, $slug = '') {
+    $slug = $slug ? $slug : sanitize_title((string) $name);
+    if ('specialities' === $slug) {
+        return 'Specialties';
+    }
+    return $name;
+}
+
 function hc_catalog_display_tree() {
     $live = hc_catalog_tree();
     if ($live) {
@@ -69,7 +77,7 @@ function hc_catalog_display_tree() {
             $children = array();
             foreach ($branch['children'] as $child) {
                 $children[] = array(
-                    'name'   => $child->name,
+                    'name'   => hc_public_label($child->name, $child->slug),
                     'slug'   => $child->slug,
                     'intro'  => hc_term_intro($child),
                     'visual' => hc_term_visual($child),
@@ -77,7 +85,7 @@ function hc_catalog_display_tree() {
                 );
             }
             $out[] = array(
-                'name'     => $branch['term']->name,
+                'name'     => hc_public_label($branch['term']->name, $branch['term']->slug),
                 'slug'     => $branch['term']->slug,
                 'intro'    => hc_term_intro($branch['term']),
                 'visual'   => hc_term_visual($branch['term']),
@@ -93,7 +101,7 @@ function hc_catalog_display_tree() {
         $children = array();
         foreach ($family['children'] as $child) {
             $children[] = array(
-                'name'   => $child['name'],
+                'name'   => hc_public_label($child['name'], $child['slug']),
                 'slug'   => $child['slug'],
                 'intro'  => $child['intro'] ?? '',
                 'visual' => $child['visual'] ?? $family['visual'],
@@ -101,7 +109,7 @@ function hc_catalog_display_tree() {
             );
         }
         $out[] = array(
-            'name'     => $family['name'],
+            'name'     => hc_public_label($family['name'], $family['slug']),
             'slug'     => $family['slug'],
             'intro'    => $family['intro'] ?? '',
             'visual'   => $family['visual'] ?? 'cartridge',
@@ -252,32 +260,7 @@ function hc_is_products_context() {
 }
 
 function hc_listing_card($product) {
-    if (! $product) {
-        return;
-    }
-    ?>
-    <article class="product-card listing-card">
-        <div class="product-card-visual">
-            <?php hc_product_visual($product['visual'], $product['name']); ?>
-        </div>
-        <div class="product-card-body">
-            <p class="meta"><?php echo esc_html(($product['model'] ? $product['model'] . ' · ' : '') . $product['category']); ?></p>
-            <h3><?php echo esc_html($product['name']); ?></h3>
-            <?php if ($product['shortDescription']) : ?>
-                <p><?php echo esc_html($product['shortDescription']); ?></p>
-            <?php endif; ?>
-            <div class="spec-row">
-                <?php if ($product['pressure']) : ?><span><?php echo esc_html($product['pressure']); ?></span><?php endif; ?>
-                <?php if ($product['flow']) : ?><span><?php echo esc_html($product['flow']); ?></span><?php endif; ?>
-            </div>
-            <p class="cart-price">On request</p>
-            <div class="product-card-actions" data-product-actions>
-                <a class="btn btn-outline" href="<?php echo esc_url($product['permalink']); ?>">View details</a>
-                <?php hc_add_to_cart_button($product); ?>
-            </div>
-        </div>
-    </article>
-    <?php
+    hc_product_card($product);
 }
 
 function hc_family_card($term, $child_count = 0) {
@@ -289,7 +272,7 @@ function hc_family_card($term, $child_count = 0) {
         </div>
         <div class="family-card-body">
             <p class="eyebrow"><?php echo esc_html($child_count ? sprintf('%d groups', $child_count) : 'Product group'); ?></p>
-            <h3><?php echo esc_html($term->name); ?></h3>
+            <h3><?php echo esc_html(hc_public_label($term->name, $term->slug)); ?></h3>
             <?php if ($intro) : ?>
                 <p><?php echo esc_html($intro); ?></p>
             <?php endif; ?>

@@ -1,19 +1,24 @@
+import { useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { Button } from '../components/common/Button'
 import { PageHero } from '../components/common/PageHero'
 import { ProductCard } from '../components/products/ProductCard'
 import { ProductGallery } from '../components/products/ProductGallery'
+import { useShop } from '../context/ShopContext'
 import { getProduct, getRelatedProducts } from '../data/products'
 
 export default function ProductDetailPage() {
   const { slug } = useParams()
   const product = slug ? getProduct(slug) : undefined
+  const { addToCart, toggleWishlist, wished } = useShop()
+  const [qty, setQty] = useState(1)
 
   if (!product) {
     return <Navigate to="/products" replace />
   }
 
   const related = getRelatedProducts(product)
+  const saved = wished(product.slug)
 
   return (
     <>
@@ -46,11 +51,34 @@ export default function ProductDetailPage() {
                 <strong>{product.cavity}</strong>
               </div>
             </div>
-            <div className="hero-actions">
-              <Button to={`/request-quote?product=${product.slug}`}>Request Quote</Button>
-              <Button to="/contact" variant="outline">
-                Speak to engineering
-              </Button>
+            <div className="detail-buy">
+              <div className="qty-control">
+                <button type="button" className="qty-btn" aria-label="Decrease quantity" onClick={() => setQty((value) => Math.max(1, value - 1))}>
+                  −
+                </button>
+                <span className="qty-value">{qty}</span>
+                <button type="button" className="qty-btn" aria-label="Increase quantity" onClick={() => setQty((value) => Math.min(999, value + 1))}>
+                  +
+                </button>
+              </div>
+              <button
+                type="button"
+                className={`wish-btn${saved ? ' is-on' : ''}`}
+                style={{ position: 'static', width: 'auto', borderRadius: '8px', padding: '0 0.9rem' }}
+                aria-pressed={saved}
+                onClick={() => toggleWishlist(product.slug)}
+              >
+                {saved ? 'Remove from Wishlist' : 'Add to Wishlist'}
+              </button>
+              <button type="button" className="btn" onClick={() => addToCart(product.slug, qty)}>
+                Add to Cart
+              </button>
+              <div className="hero-actions">
+                <Button to={`/request-quote?product=${product.slug}`}>Request Quote</Button>
+                <Button to="/contact" variant="outline">
+                  Speak to engineering
+                </Button>
+              </div>
             </div>
           </div>
         </div>

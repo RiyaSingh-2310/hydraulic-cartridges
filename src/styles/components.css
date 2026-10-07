@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--header-h));
   display: grid;
   align-items: end;
   color: var(--white);
@@ -31,9 +31,15 @@
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: calc(var(--header-h) + 2.6rem) 0 2.4rem;
+  padding: 2.6rem 0 2.4rem;
   display: grid;
   gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: calc(100dvh - var(--header-h) - var(--catalog-bar-h));
+  }
 }
 
 @media (min-width: 960px) {
@@ -175,6 +181,7 @@
 }
 
 .product-card-visual {
+  position: relative;
   height: 13.5rem;
   background:
     linear-gradient(180deg, #1b2128 0%, #101419 100%);

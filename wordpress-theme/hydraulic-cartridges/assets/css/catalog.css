@@ -37,14 +37,14 @@
   align-items: stretch;
   justify-content: center;
   flex: 1;
+  flex-wrap: wrap;
   width: 100%;
-  height: var(--catalog-bar-h);
+  height: auto;
+  min-height: var(--catalog-bar-h);
   max-width: var(--container-wide);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  overflow-x: auto;
-  overflow-y: visible;
-  scrollbar-width: thin;
+  overflow: visible;
 }
 
 .catalog-bar-item {
@@ -85,15 +85,26 @@
   background: rgba(246, 241, 232, 0.05);
 }
 
+.catalog-drop-title {
+  margin: 0;
+  padding: 0.85rem 1.15rem 0.45rem;
+  color: var(--white);
+  font-family: var(--font-display);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
 .catalog-drop {
   display: none;
   position: absolute;
   left: 0;
   top: 100%;
   z-index: 96;
-  min-width: 17.5rem;
-  padding: 0.2rem 0 0.35rem;
-  background: #11161c;
+  min-width: 18.5rem;
+  padding: 0.15rem 0 0.35rem;
+  background: #0a0c0e;
   border: 1px solid rgba(246, 241, 232, 0.14);
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.48);
 }
@@ -199,14 +210,14 @@
   font-size: 0.74rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 959px) {
   .catalog-bar {
     display: none !important;
   }
 }
 
 .site-header.has-catalog-bar .mega-panel {
-  top: calc(var(--header-h) + var(--catalog-bar-h) - 0.15rem);
+  top: 100%;
 }
 
 .mega-panel {
@@ -214,7 +225,7 @@
   position: absolute;
   left: var(--gutter);
   right: var(--gutter);
-  top: calc(var(--header-h) - 0.15rem);
+  top: 100%;
   z-index: 90;
   max-width: var(--container-wide);
   margin-inline: auto;
@@ -475,11 +486,50 @@
   transform: rotate(225deg);
 }
 
-.mobile-family-panel a {
+.mobile-family-panel a,
+.mobile-sub-panel a {
   font-size: 0.95rem !important;
   min-height: 2.5rem !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
   color: var(--mist) !important;
+}
+
+.mobile-sub-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.6rem;
+  padding: 0.35rem 0 0.35rem 0.15rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--mist);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mobile-sub-toggle::after {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  flex: none;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.mobile-sub-toggle[aria-expanded='true']::after {
+  transform: rotate(225deg);
+}
+
+.mobile-sub-panel {
+  padding-left: 0.65rem;
 }
 
 .catalog-shell {

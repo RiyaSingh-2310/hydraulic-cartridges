@@ -12,6 +12,8 @@ const AboutPage = lazy(() => import('../pages/AboutPage'))
 const ResourcesPage = lazy(() => import('../pages/ResourcesPage'))
 const ContactPage = lazy(() => import('../pages/ContactPage'))
 const RequestQuotePage = lazy(() => import('../pages/RequestQuotePage'))
+const AccountPage = lazy(() => import('../pages/AccountPage'))
+const WishlistPage = lazy(() => import('../pages/WishlistPage'))
 const PrivacyPage = lazy(() => import('../pages/PrivacyPage'))
 const TermsPage = lazy(() => import('../pages/TermsPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
@@ -32,6 +34,8 @@ export function AppRouter() {
           <Route path="resources" element={<ResourcesPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="request-quote" element={<RequestQuotePage />} />
+          <Route path="account" element={<AccountPage />} />
+          <Route path="wishlist" element={<WishlistPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="terms" element={<TermsPage />} />
           <Route path="*" element={<NotFoundPage />} />

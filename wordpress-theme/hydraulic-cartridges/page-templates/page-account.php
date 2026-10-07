@@ -9,7 +9,7 @@ if (is_user_logged_in() && isset($_GET['action']) && 'logout' === $_GET['action'
     exit;
 }
 
-$redirect = isset($_GET['redirect_to']) ? wp_validate_redirect(esc_url_raw(wp_unslash($_GET['redirect_to'])), hc_cart_url()) : hc_cart_url();
+$redirect = isset($_GET['redirect_to']) ? wp_validate_redirect(esc_url_raw(wp_unslash($_GET['redirect_to'])), hc_checkout_url()) : hc_checkout_url();
 $view     = isset($_GET['view']) ? sanitize_key(wp_unslash($_GET['view'])) : 'login';
 $notice   = isset($_GET['notice']) ? sanitize_key(wp_unslash($_GET['notice'])) : '';
 $error    = '';
@@ -37,7 +37,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD'] && isset($_POST['hc_auth_nonce']) && w
                 }
                 wp_set_current_user($user_id);
                 wp_set_auth_cookie($user_id, true);
-                wp_safe_redirect($redirect ?: hc_cart_url());
+                wp_safe_redirect($redirect ?: hc_checkout_url());
                 exit;
             }
         }
@@ -51,7 +51,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD'] && isset($_POST['hc_auth_nonce']) && w
             $error = 'Sign-in failed. Check the email and password.';
             $view  = 'login';
         } else {
-            wp_safe_redirect($redirect ?: hc_cart_url());
+            wp_safe_redirect($redirect ?: hc_checkout_url());
             exit;
         }
     }
@@ -59,12 +59,13 @@ if ('POST' === $_SERVER['REQUEST_METHOD'] && isset($_POST['hc_auth_nonce']) && w
 
 get_header();
 $user = wp_get_current_user();
+$from_cart = 'login-cart' === $notice;
 hc_page_hero(
     'Account',
-    is_user_logged_in() ? 'My account' : ('register' === $view ? 'Create account' : 'Sign in'),
+    is_user_logged_in() ? 'My Account' : ('register' === $view ? 'Sign Up' : 'Login'),
     is_user_logged_in()
-        ? 'Manage quotation requests from this catalog session.'
-        : 'Please log in to continue with your cart.'
+        ? 'Your quotation cart, wishlist, and requests stay with this account.'
+        : ($from_cart ? 'Please log in to continue with your cart.' : 'Login or create an account to request a quotation.')
 );
 ?>
 <section class="section">
@@ -79,9 +80,10 @@ hc_page_hero(
                 <h2 class="display" style="font-size: 1.8rem; margin: 0.4rem 0 0.75rem;"><?php echo esc_html($user->display_name); ?></h2>
                 <p><?php echo esc_html($user->user_email); ?></p>
                 <div class="cart-actions" style="margin-top: 1.25rem;">
-                    <?php hc_btn(hc_cart_url(), 'Open cart'); ?>
-                    <?php hc_btn(hc_quote_url(), 'Request a quote', 'outline'); ?>
-                    <?php hc_btn(wp_logout_url(home_url('/')), 'Log out', 'ghost'); ?>
+                    <?php hc_btn(hc_wishlist_url(), 'Wishlist', 'outline'); ?>
+                    <?php hc_btn(hc_cart_url(), 'Cart', 'outline'); ?>
+                    <?php hc_btn(hc_quote_url(), 'My Orders / Requests'); ?>
+                    <?php hc_btn(wp_logout_url(home_url('/')), 'Logout', 'outline'); ?>
                 </div>
             </div>
         <?php else : ?>
@@ -107,21 +109,21 @@ hc_page_hero(
                         <input id="acc-pass" name="password" type="password" autocomplete="<?php echo 'register' === $view ? 'new-password' : 'current-password'; ?>" required minlength="8" />
                     </div>
                     <div>
-                        <button class="btn" type="submit"><?php echo 'register' === $view ? 'Create account' : 'Sign in'; ?></button>
+                        <button class="btn" type="submit"><?php echo 'register' === $view ? 'Create Account' : 'Login'; ?></button>
                     </div>
                 </form>
                 <?php if ('register' !== $view) : ?>
                     <p class="auth-switch">
-                        <a href="<?php echo esc_url(wp_lostpassword_url(hc_account_url())); ?>">Forgot password</a>
+                        <a href="<?php echo esc_url(wp_lostpassword_url(hc_account_url())); ?>">Forgot Password</a>
                     </p>
                     <p class="auth-switch">
                         Need an account?
-                        <a href="<?php echo esc_url(hc_account_url(array('view' => 'register', 'redirect_to' => $redirect, 'notice' => $notice))); ?>">Create account</a>
+                        <a href="<?php echo esc_url(hc_account_url(array('view' => 'register', 'redirect_to' => $redirect, 'notice' => $notice))); ?>">Create Account</a>
                     </p>
                 <?php else : ?>
                     <p class="auth-switch">
                         Already registered?
-                        <a href="<?php echo esc_url(hc_account_url(array('redirect_to' => $redirect, 'notice' => $notice))); ?>">Sign in</a>
+                        <a href="<?php echo esc_url(hc_account_url(array('redirect_to' => $redirect, 'notice' => $notice))); ?>">Login</a>
                     </p>
                 <?php endif; ?>
             </div>

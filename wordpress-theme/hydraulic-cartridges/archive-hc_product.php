@@ -7,7 +7,7 @@ get_header();
 hc_page_hero(
     'Catalog',
     'Hydraulic cartridge families',
-    'Specify by family, then by cavity and function — valves, pumps, filters, accessories, heat exchangers, and specialities.',
+    'Specify by family, then by cavity and function — valves, pumps, filters, accessories, heat exchangers, and specialties.',
     false,
     array(
         array('label' => 'Home', 'url' => home_url('/')),

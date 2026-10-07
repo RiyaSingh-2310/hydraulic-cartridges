@@ -47,6 +47,7 @@
         </div>
     </div>
 </footer>
+<?php hc_render_cart_drawer(); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

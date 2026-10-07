@@ -3,10 +3,15 @@
  * Template Name: Request a Quote
  */
 
+$from_cart = isset($_GET['from']) && 'cart' === sanitize_key(wp_unslash($_GET['from']));
+if ($from_cart && ! is_user_logged_in()) {
+    wp_safe_redirect(hc_checkout_url());
+    exit;
+}
+
 get_header();
 $products = hc_get_products();
 $preset   = isset($_GET['product']) ? sanitize_text_field(wp_unslash($_GET['product'])) : '';
-$from_cart = isset($_GET['from']) && 'cart' === sanitize_key(wp_unslash($_GET['from']));
 $cart_items = $from_cart ? hc_cart_items() : array();
 if ($cart_items && ! $preset) {
     $preset = $cart_items[0]['slug'];

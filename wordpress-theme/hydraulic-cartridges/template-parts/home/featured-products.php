@@ -8,9 +8,9 @@ if (! $products) {
     <div class="container">
         <?php
         hc_section_header(
-            'Catalog',
-            'Popular series',
-            'Specify from published families, then add series to a quotation cart. Ratings are confirmed at quotation.',
+            'Featured products',
+            'Specify from the catalog',
+            'Add a series to your cart or wishlist. Ratings and pricing are confirmed when you request a quotation.',
             true
         );
         ?>

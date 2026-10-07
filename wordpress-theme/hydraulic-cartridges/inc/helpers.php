@@ -399,21 +399,38 @@ function hc_product_card($product, $index = null) {
     if (! $product) {
         return;
     }
-    $label = null !== $index ? str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) : $product['model'];
+    $category = $product['category'] ?: '';
+    $meta     = trim(($product['model'] ? $product['model'] . ' · ' : '') . $category);
+    if (null !== $index) {
+        $meta = str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) . ($meta ? ' · ' . $meta : '');
+    }
     ?>
-    <article class="product-card">
+    <article class="product-card listing-card">
         <div class="product-card-visual">
+            <?php hc_wishlist_button($product); ?>
             <?php hc_product_visual($product['visual'], $product['name']); ?>
         </div>
         <div class="product-card-body">
-            <p class="meta"><?php echo esc_html($label . ' · ' . $product['category']); ?></p>
-            <h3><?php echo esc_html($product['name']); ?></h3>
-            <p><?php echo esc_html($product['shortDescription']); ?></p>
-            <div class="spec-row">
-                <span><?php echo esc_html($product['pressure']); ?></span>
-                <span><?php echo esc_html($product['flow']); ?></span>
+            <?php if ($meta) : ?>
+                <p class="meta"><?php echo esc_html($meta); ?></p>
+            <?php endif; ?>
+            <h3>
+                <a href="<?php echo esc_url($product['permalink']); ?>"><?php echo esc_html($product['name']); ?></a>
+            </h3>
+            <?php if (! empty($product['shortDescription'])) : ?>
+                <p><?php echo esc_html($product['shortDescription']); ?></p>
+            <?php endif; ?>
+            <?php if (! empty($product['pressure']) || ! empty($product['flow'])) : ?>
+                <div class="spec-row">
+                    <?php if (! empty($product['pressure'])) : ?><span><?php echo esc_html($product['pressure']); ?></span><?php endif; ?>
+                    <?php if (! empty($product['flow'])) : ?><span><?php echo esc_html($product['flow']); ?></span><?php endif; ?>
+                </div>
+            <?php endif; ?>
+            <p class="cart-price">Quote on request</p>
+            <div class="product-card-actions" data-product-actions>
+                <?php hc_add_to_cart_button($product, 'Add to Cart'); ?>
+                <a class="btn btn-outline" href="<?php echo esc_url($product['permalink']); ?>">View details</a>
             </div>
-            <a class="explore-link" href="<?php echo esc_url($product['permalink']); ?>">Explore product →</a>
         </div>
     </article>
     <?php

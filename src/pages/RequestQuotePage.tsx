@@ -1,22 +1,48 @@
-import { type FormEvent, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { type FormEvent, useEffect, useMemo, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Button } from '../components/common/Button'
 import { PageHero } from '../components/common/PageHero'
-import { products } from '../data/products'
+import { catalogFamilies } from '../data/catalog'
+import { useShop } from '../context/ShopContext'
+import { getProduct } from '../data/products'
 import { emptyQuoteForm, validateQuoteForm, type QuoteFormValues } from '../lib/validation'
 
 export default function RequestQuotePage() {
   const [params] = useSearchParams()
+  const navigate = useNavigate()
+  const { cart, user } = useShop()
   const preset = params.get('product') ?? ''
+  const fromCart = params.get('from') === 'cart'
+  const cartNote = cart
+    .map((line) => {
+      const product = getProduct(line.slug)
+      return product ? `${line.qty} × ${product.name}${product.model ? ` (${product.model})` : ''}` : ''
+    })
+    .filter(Boolean)
+    .join('\n')
   const [values, setValues] = useState<QuoteFormValues>({
     ...emptyQuoteForm,
-    product: preset,
+    product: preset || cart[0]?.slug || '',
+    quantity: fromCart && cart[0] ? String(cart[0].qty) : emptyQuoteForm.quantity,
+    message: cartNote ? `Cart lines:\n${cartNote}` : '',
   })
   const [errors, setErrors] = useState<ReturnType<typeof validateQuoteForm>>({})
   const [submitted, setSubmitted] = useState(false)
 
+  useEffect(() => {
+    if (fromCart && !user) {
+      navigate(`/account?notice=login-cart&redirect=${encodeURIComponent('/request-quote?from=cart')}`, {
+        replace: true,
+      })
+    }
+  }, [fromCart, user, navigate])
+
   const options = useMemo(
-    () => products.map((item) => ({ value: item.slug, label: item.name })),
+    () =>
+      catalogFamilies.map((family) => ({
+        label: family.name,
+        items: family.children.flatMap((group) => group.products),
+      })),
     [],
   )
 
@@ -133,10 +159,15 @@ export default function RequestQuotePage() {
                   onChange={(e) => update('product', e.target.value)}
                 >
                   <option value="">Select a family</option>
-                  {options.map((item) => (
-                    <option key={item.value} value={item.value}>
-                      {item.label}
-                    </option>
+                  {options.map((group) => (
+                    <optgroup key={group.label} label={group.label}>
+                      {group.items.map((item) => (
+                        <option key={item.slug} value={item.slug}>
+                          {item.model ? `${item.model} — ` : ''}
+                          {item.name}
+                        </option>
+                      ))}
+                    </optgroup>
                   ))}
                 </select>
                 {errors.product ? <p className="error">{errors.product}</p> : null}

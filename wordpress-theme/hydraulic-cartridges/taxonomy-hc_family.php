@@ -16,16 +16,16 @@ $group    = $is_group ? $term : null;
 $children = $is_group ? array() : hc_get_family_terms($term->term_id);
 $intro    = hc_term_intro($term);
 
-$eyebrow = $is_group && $family && ! is_wp_error($family) ? $family->name : 'Catalog';
+$eyebrow = $is_group && $family && ! is_wp_error($family) ? hc_public_label($family->name, $family->slug) : 'Catalog';
 $crumbs  = array(
     array('label' => 'Home', 'url' => home_url('/')),
     array('label' => 'Products', 'url' => hc_products_url()),
 );
 if ($is_group && $family && ! is_wp_error($family)) {
-    $crumbs[] = array('label' => $family->name, 'url' => hc_family_link($family));
+    $crumbs[] = array('label' => hc_public_label($family->name, $family->slug), 'url' => hc_family_link($family));
 }
-$crumbs[] = array('label' => $term->name, 'url' => '');
-hc_page_hero($eyebrow, $term->name, $intro, $is_group, $crumbs);
+$crumbs[] = array('label' => hc_public_label($term->name, $term->slug), 'url' => '');
+hc_page_hero($eyebrow, hc_public_label($term->name, $term->slug), $intro, $is_group, $crumbs);
 ?>
 <section class="section">
     <div class="container catalog-shell">
