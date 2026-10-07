@@ -5,15 +5,12 @@
   const layer = document.querySelector('.menu-layer');
   const closeBtn = document.querySelector('.menu-close');
   const backdrop = document.querySelector('.menu-backdrop');
-  const sr = toggle?.querySelector('.sr-only');
 
   function setOpen(open) {
     if (!header || !layer || !toggle) return;
     header.classList.toggle('menu-open', open);
     layer.classList.toggle('is-open', open);
-    toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (sr) sr.textContent = open ? 'Close menu' : 'Open menu';
     document.body.style.overflow = open ? 'hidden' : '';
     document.documentElement.style.overflow = open ? 'hidden' : '';
     if (open) closeBtn?.focus();
@@ -83,6 +80,39 @@
           notice.hidden = true;
         }
       }
+    });
+  });
+  document.querySelectorAll('[data-acc-group]').forEach((group) => {
+    group.querySelectorAll('[data-acc-toggle]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const panel = button.parentElement?.querySelector('[data-acc-panel]');
+        const open = button.getAttribute('aria-expanded') === 'true';
+        group.querySelectorAll('[data-acc-toggle]').forEach((other) => {
+          other.setAttribute('aria-expanded', 'false');
+          const otherPanel = other.parentElement?.querySelector('[data-acc-panel]');
+          if (otherPanel) otherPanel.hidden = true;
+        });
+        if (!open) {
+          button.setAttribute('aria-expanded', 'true');
+          if (panel) panel.hidden = false;
+        }
+      });
+    });
+  });
+  document.querySelectorAll('.mega-explorer').forEach((explorer) => {
+    const families = [...explorer.querySelectorAll('[data-mega-family]')];
+    const panels = [...explorer.querySelectorAll('[data-mega-panel]')];
+    const show = (slug) => {
+      families.forEach((el) => el.classList.toggle('is-active', el.getAttribute('data-mega-family') === slug));
+      panels.forEach((el) => {
+        const on = el.getAttribute('data-mega-panel') === slug;
+        el.classList.toggle('is-active', on);
+        el.hidden = !on;
+      });
+    };
+    families.forEach((el) => {
+      el.addEventListener('mouseenter', () => show(el.getAttribute('data-mega-family')));
+      el.addEventListener('focus', () => show(el.getAttribute('data-mega-family')));
     });
   });
 })();

@@ -55,6 +55,17 @@ function hc_render_product_metabox($post) {
     echo '<p><label><strong>Typical applications (one per line)</strong><br /><textarea name="_hc_applications" class="widefat" rows="3">' . esc_textarea(implode("\n", $apps)) . '</textarea></label></p>';
     echo '<p><label><strong>Related product slugs (one per line)</strong><br /><textarea name="_hc_related" class="widefat" rows="3">' . esc_textarea(implode("\n", $related)) . '</textarea></label></p>';
     echo '<p><label><strong>Technical specs (label | value)</strong><br /><textarea name="_hc_technical" class="widefat" rows="6">' . esc_textarea($tech_txt) . '</textarea></label></p>';
+    echo '<p><label><strong>Accessories (one per line)</strong><br /><textarea name="_hc_accessories" class="widefat" rows="3">' . esc_textarea(implode("\n", hc_decode_meta($post->ID, '_hc_accessories'))) . '</textarea></label></p>';
+    $downloads = hc_decode_meta($post->ID, '_hc_downloads');
+    $dl_txt = '';
+    foreach ($downloads as $row) {
+        if (is_array($row)) {
+            $dl_txt .= ($row['title'] ?? '') . ' | ' . ($row['type'] ?? '') . "\n";
+        } else {
+            $dl_txt .= $row . "\n";
+        }
+    }
+    echo '<p><label><strong>Downloads (title | type)</strong><br /><textarea name="_hc_downloads" class="widefat" rows="4">' . esc_textarea($dl_txt) . '</textarea></label></p>';
     $featured = get_post_meta($post->ID, '_hc_featured', true);
     echo '<p><label><input type="checkbox" name="_hc_featured" value="1" ' . checked($featured, '1', false) . ' /> Featured product</label></p>';
 }
@@ -114,6 +125,13 @@ function hc_save_product_meta($post_id) {
     update_post_meta($post_id, '_hc_gallery_captions', wp_json_encode(hc_lines_from_post('_hc_gallery_captions')));
     update_post_meta($post_id, '_hc_applications', wp_json_encode(hc_lines_from_post('_hc_applications')));
     update_post_meta($post_id, '_hc_related', wp_json_encode(hc_lines_from_post('_hc_related')));
+    update_post_meta($post_id, '_hc_accessories', wp_json_encode(hc_lines_from_post('_hc_accessories')));
+    $downloads = array();
+    foreach (hc_lines_from_post('_hc_downloads') as $line) {
+        $parts = array_map('trim', explode('|', $line, 2));
+        $downloads[] = array('title' => $parts[0] ?? '', 'type' => $parts[1] ?? 'Placeholder');
+    }
+    update_post_meta($post_id, '_hc_downloads', wp_json_encode($downloads));
     $tech = array();
     foreach (hc_lines_from_post('_hc_technical') as $line) {
         $parts = array_map('trim', explode('|', $line, 2));

@@ -20,3 +20,6 @@ require_once $hc_dir . '/inc/customizer.php';
 require_once $hc_dir . '/inc/meta-boxes.php';
 require_once $hc_dir . '/inc/seed.php';
 require_once $hc_dir . '/inc/visuals.php';
+require_once $hc_dir . '/inc/catalog-data.php';
+require_once $hc_dir . '/inc/catalog.php';
+require_once $hc_dir . '/inc/seed-catalog.php';

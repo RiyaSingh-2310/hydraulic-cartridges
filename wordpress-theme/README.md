@@ -1,41 +1,33 @@
 # Hydraulic Cartridges — WordPress theme
 
-Custom theme migrated from the approved React + Vite frontend. The React app in `src/` remains the visual source of truth and was not deleted.
+Copy `hydraulic-cartridges/` into `wp-content/themes/` and activate. No npm build is required.
 
 ## Install
 
-1. Copy `wordpress-theme/hydraulic-cartridges/` into `wp-content/themes/hydraulic-cartridges/` on a WordPress 6.4+ site (PHP 8.0+).
-2. Appearance → Themes → Activate **Hydraulic Cartridges**.
-3. Settings → Permalinks → **Post name** → Save (the theme also sets this on activation).
-4. Activation seeds products, solutions, resources, FAQs, pages, and the primary menu from the React catalog data.
+1. Copy this folder to `wp-content/themes/hydraulic-cartridges/`.
+2. Activate **Hydraulic Cartridges**.
+3. Settings → Permalinks → **Post name** → Save (required after this catalog URL update).
+4. Load any front-end page once so families seed (`hc_catalog_seeded`).
 
-If you activate the theme a second time, seed is skipped (`hc_seeded` option). Delete that option and re-activate to reseed empty content only where slugs do not already exist.
+## URLs
 
-## URLs (match the React routes)
-
-| React | WordPress |
+| Path | What it shows |
 | --- | --- |
-| `/` | Front page (`front-page.php`) |
-| `/products` | Products CPT archive |
-| `/products/:slug` | Single product |
-| `/applications` | Solutions CPT archive |
-| `/applications/:slug` | Single solution |
-| `/about` `/resources` `/contact` `/request-quote` `/privacy` `/terms` | Pages with matching templates |
+| `/` | Homepage overview |
+| `/products/` | Catalog hub |
+| `/products/valves/` | Major category |
+| `/products/valves/proportional-cartridge-valves/` | Product group listing |
+| `/products/valves/proportional-cartridge-valves/{slug}/` | Product detail |
+| `/applications/` | Solutions |
+| `/about/` `/resources/` `/contact/` `/request-quote/` | Pages |
+
+## Product discovery
+
+- **Homepage:** six family cards with a short group preview (not the full tree).
+- **Header → Products:** hover a family to reveal every subgroup; click the family to open its category page.
+- **Category pages:** sidebar accordion (one family open) + listing.
+- **Mobile:** tap to expand, one family at a time; hamburger does not become an X.
 
 ## Admin
 
-- **Products** and **Solutions** custom post types power the existing cards and detail layouts.
-- **Resources** and **FAQs** are admin-only post types used by the Resources UI.
-- Appearance → Customize → Hydraulic Cartridges: email, phone, address, hours, ISO line.
-- Appearance → Customize → Site Identity: optional logo (default remains the React SVG mark).
-- Appearance → Menus: Primary location.
-
-Do not restyle templates to “improve” the design. Change copy and catalog data only.
-
-## Forms
-
-Contact and Request a Quote keep the React validation rules (name 2–35, email format, non-whitespace message). Submission is frontend-only; nonce fields are present for a later mailer without UI changes.
-
-## Visual QA
-
-Compare against `npm run dev` in the original React project. Header, type, color, spacing, product SVGs, and breakpoints are copied from `src/styles` and `src/components`.
+Products, Product families, Solutions, Resources, FAQs. Customize → Hydraulic Cartridges for contact details.

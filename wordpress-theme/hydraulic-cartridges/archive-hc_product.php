@@ -1,21 +1,32 @@
 <?php
 /**
- * Products archive.
+ * Products hub — major families.
  */
 
 get_header();
 hc_page_hero(
     'Catalog',
     'Hydraulic cartridge families',
-    'Screw-in valves for pressure, flow, direction, and load control — plus custom cavities when a standard ISO interface is not enough.'
+    'Specify by family, then by cavity and function — valves, pumps, filters, accessories, heat exchangers, and specialities.',
+    false,
+    array(
+        array('label' => 'Home', 'url' => home_url('/')),
+        array('label' => 'Products', 'url' => ''),
+    )
 );
-$products = hc_get_products();
+$tree = hc_catalog_tree();
 ?>
 <section class="section">
-    <div class="container product-grid">
-        <?php foreach ($products as $index => $product) : ?>
-            <?php hc_product_card($product, $index); ?>
-        <?php endforeach; ?>
+    <div class="container catalog-shell">
+        <?php get_template_part('template-parts/catalog/sidebar', null, array('family' => null, 'group' => null)); ?>
+        <div class="catalog-main">
+            <div class="family-grid">
+                <?php foreach ($tree as $branch) : ?>
+                    <?php hc_family_card($branch['term'], count($branch['children'])); ?>
+                <?php endforeach; ?>
+            </div>
+            <?php get_template_part('template-parts/catalog/related-ranges'); ?>
+        </div>
     </div>
 </section>
 <?php

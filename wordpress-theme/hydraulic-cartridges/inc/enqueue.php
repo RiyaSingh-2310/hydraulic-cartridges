@@ -23,6 +23,7 @@ add_action('wp_enqueue_scripts', function () {
         'hc-layout'     => '/assets/css/layout.css',
         'hc-components' => '/assets/css/components.css',
         'hc-wordpress'  => '/assets/css/wordpress.css',
+        'hc-catalog'    => '/assets/css/catalog.css',
     );
 
     $prev = array('hc-fonts');

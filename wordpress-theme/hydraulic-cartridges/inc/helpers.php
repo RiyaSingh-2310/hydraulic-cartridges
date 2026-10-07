@@ -96,16 +96,39 @@ function hc_section_header($eyebrow, $title, $copy = '', $split = false) {
     <?php
 }
 
-function hc_page_hero($eyebrow, $title, $description, $compact = false) {
+function hc_page_hero($eyebrow, $title, $description, $compact = false, $crumbs = array()) {
     ?>
     <header class="page-hero<?php echo $compact ? ' compact' : ''; ?>">
         <div class="container">
+            <?php if ($crumbs) : ?>
+                <?php hc_render_crumbs($crumbs); ?>
+            <?php endif; ?>
             <p class="eyebrow"><?php echo esc_html($eyebrow); ?></p>
             <h1 class="display"><?php echo esc_html($title); ?></h1>
             <p><?php echo esc_html($description); ?></p>
         </div>
     </header>
     <?php
+}
+
+function hc_render_crumbs($items) {
+    if (! $items) {
+        return;
+    }
+    echo '<nav class="crumbs" aria-label="Breadcrumb"><ol>';
+    $last = count($items) - 1;
+    foreach ($items as $i => $item) {
+        $label = $item['label'] ?? '';
+        $url   = $item['url'] ?? '';
+        echo '<li>';
+        if ($url && $i !== $last) {
+            printf('<a href="%s">%s</a>', esc_url($url), esc_html($label));
+        } else {
+            echo '<span aria-current="page">' . esc_html($label) . '</span>';
+        }
+        echo '</li>';
+    }
+    echo '</ol></nav>';
 }
 
 function hc_reveal_open($delay = 0, $class = '') {
@@ -159,6 +182,8 @@ function hc_product_from_post($post) {
         'technical'       => hc_decode_meta($id, '_hc_technical'),
         'applications'    => hc_decode_meta($id, '_hc_applications'),
         'relatedSlugs'    => hc_decode_meta($id, '_hc_related'),
+        'accessories'     => hc_decode_meta($id, '_hc_accessories'),
+        'downloads'       => hc_decode_meta($id, '_hc_downloads'),
         'featured'        => (bool) get_post_meta($id, '_hc_featured', true),
     );
 }
@@ -192,6 +217,32 @@ function hc_get_products() {
         'posts_per_page' => -1,
         'orderby'        => 'menu_order title',
         'order'          => 'ASC',
+        'post_status'    => 'publish',
+        'no_found_rows'  => true,
+    ));
+    $items = array();
+    foreach ($query->posts as $post) {
+        $items[] = hc_product_from_post($post);
+    }
+    wp_reset_postdata();
+    return $items;
+}
+
+function hc_get_home_products() {
+    $slugs = array();
+    foreach ((hc_seed_data()['products'] ?? array()) as $item) {
+        if (! empty($item['slug'])) {
+            $slugs[] = $item['slug'];
+        }
+    }
+    if (! $slugs) {
+        return array_slice(hc_get_products(), 0, 8);
+    }
+    $query = new WP_Query(array(
+        'post_type'      => 'hc_product',
+        'posts_per_page' => count($slugs),
+        'post_name__in'  => $slugs,
+        'orderby'        => 'post_name__in',
         'post_status'    => 'publish',
         'no_found_rows'  => true,
     ));

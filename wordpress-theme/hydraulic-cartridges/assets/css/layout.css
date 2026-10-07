@@ -82,6 +82,7 @@
   flex: 1;
   gap: 0.85rem;
   min-width: 0;
+  height: 100%;
 }
 
 .desktop-nav a {
@@ -168,21 +169,6 @@
 
 .menu-toggle span::after {
   top: 6px;
-}
-
-.menu-toggle.open span {
-  background: transparent;
-  width: 0;
-}
-
-.menu-toggle.open span::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.menu-toggle.open span::after {
-  top: 0;
-  transform: rotate(-45deg);
 }
 
 .menu-layer {

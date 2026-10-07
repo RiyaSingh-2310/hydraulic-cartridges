@@ -14,7 +14,7 @@
             <?php hc_logo_markup(); ?>
         </a>
         <nav class="desktop-nav" aria-label="Primary">
-            <?php hc_primary_nav(); ?>
+            <?php hc_primary_nav('desktop'); ?>
         </nav>
         <div class="header-cta">
             <?php hc_btn(hc_quote_url(), 'Request a Quote'); ?>
@@ -32,7 +32,7 @@
                 <button type="button" class="menu-close">Close</button>
             </div>
             <div class="mobile-nav-links">
-                <?php hc_primary_nav(); ?>
+                <?php hc_primary_nav('mobile'); ?>
             </div>
             <?php hc_btn(hc_quote_url(), 'Request a Quote'); ?>
         </nav>

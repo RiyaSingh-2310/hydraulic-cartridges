@@ -23,7 +23,7 @@ $hero   = $images['hero'] ?? array('src' => '', 'alt' => '');
                 component.
             </p>
             <div class="hero-actions">
-                <?php hc_btn(hc_products_url(), 'Explore Products'); ?>
+                <?php hc_btn('#product-range', 'Explore Products'); ?>
                 <?php hc_btn(hc_quote_url(), 'Request a Quote', 'ghost'); ?>
             </div>
         </div>
