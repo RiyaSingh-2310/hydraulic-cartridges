@@ -6,10 +6,21 @@
 get_header();
 $products = hc_get_products();
 $preset   = isset($_GET['product']) ? sanitize_text_field(wp_unslash($_GET['product'])) : '';
+$from_cart = isset($_GET['from']) && 'cart' === sanitize_key(wp_unslash($_GET['from']));
+$cart_items = $from_cart ? hc_cart_items() : array();
+if ($cart_items && ! $preset) {
+    $preset = $cart_items[0]['slug'];
+}
+$cart_note = '';
+foreach ($cart_items as $line) {
+    $cart_note .= $line['qty'] . ' × ' . $line['name'] . ($line['model'] ? ' (' . $line['model'] . ')' : '') . "\n";
+}
 hc_page_hero(
     'Request a quote',
     'Tell us the circuit. We will answer with a cartridge.',
-    'Frontend validation only — there is no server submission in this phase. A success state confirms the form is complete.'
+    $from_cart
+        ? 'Your cart series are listed below. Confirm application details so the desk can quote.'
+        : 'Frontend validation only — there is no server submission in this phase. A success state confirms the form is complete.'
 );
 ?>
 <section class="section">
@@ -68,7 +79,7 @@ hc_page_hero(
             </div>
             <div class="field full" data-field="message">
                 <label for="quote-message">Message</label>
-                <textarea id="quote-message" name="message" minlength="1" placeholder="Pressure, flow, cavity code, fluid, and duty cycle."></textarea>
+                <textarea id="quote-message" name="message" minlength="1" placeholder="Pressure, flow, cavity code, fluid, and duty cycle."><?php echo esc_textarea($cart_note ? "Cart lines:\n" . $cart_note : ''); ?></textarea>
             </div>
             <div>
                 <button class="btn" type="submit">Submit request</button>

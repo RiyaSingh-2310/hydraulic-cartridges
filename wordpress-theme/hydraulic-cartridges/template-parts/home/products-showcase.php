@@ -8,9 +8,9 @@ if (! $ranges) {
     <div class="container">
         <?php
         hc_section_header(
-            'Explore our products',
+            'Shop by category',
             'The manufacturing range',
-            'Six product families for industrial fluid power. Open a category for the full group list, or use Products in the header to browse every series.',
+            'Six product families for industrial fluid power. Open a category for the full group list, or use the category bar above to jump into a family.',
             true
         );
         ?>

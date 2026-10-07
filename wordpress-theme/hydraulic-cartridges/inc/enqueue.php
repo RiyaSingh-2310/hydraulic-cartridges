@@ -24,6 +24,7 @@ add_action('wp_enqueue_scripts', function () {
         'hc-components' => '/assets/css/components.css',
         'hc-wordpress'  => '/assets/css/wordpress.css',
         'hc-catalog'    => '/assets/css/catalog.css',
+        'hc-commerce'   => '/assets/css/commerce.css',
     );
 
     $prev = array('hc-fonts');
@@ -43,6 +44,22 @@ add_action('wp_enqueue_scripts', function () {
         array(),
         (string) filemtime($dir . '/assets/js/theme.js'),
         true
+    );
+
+    wp_enqueue_script(
+        'hc-commerce',
+        $uri . '/assets/js/commerce.js',
+        array(),
+        (string) filemtime($dir . '/assets/js/commerce.js'),
+        true
+    );
+    wp_localize_script(
+        'hc-commerce',
+        'hcCommerce',
+        array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce'   => wp_create_nonce('hc_commerce'),
+        )
     );
 
     if (is_front_page()) {

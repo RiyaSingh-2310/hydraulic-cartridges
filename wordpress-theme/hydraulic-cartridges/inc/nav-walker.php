@@ -74,7 +74,9 @@ function hc_nav_items() {
             );
         }
         if ($built) {
-            return $built;
+            return array_values(array_filter($built, function ($item) {
+                return 0 !== strcasecmp($item['title'], 'Sub Categories');
+            }));
         }
     }
     return array(
@@ -144,23 +146,28 @@ function hc_render_products_mega($item, $active) {
 }
 
 function hc_render_products_mobile($item, $active) {
-    $ranges = hc_catalog_display_tree();
+    $ranges = hc_catalog_explorer_tree();
     ?>
     <div class="mobile-products">
         <a href="<?php echo esc_url($item['url']); ?>" class="<?php echo $active ? 'active' : ''; ?>">
             <?php echo esc_html($item['title']); ?>
         </a>
         <?php if ($ranges) : ?>
-            <div class="mobile-families" data-acc-group>
-                <?php foreach ($ranges as $index => $range) : ?>
+            <div class="mobile-families" data-acc-multi>
+                <?php foreach ($ranges as $range) : ?>
                     <div class="mobile-family">
-                        <button type="button" class="mobile-family-toggle" aria-expanded="<?php echo 0 === $index ? 'true' : 'false'; ?>" data-acc-toggle>
+                        <button type="button" class="mobile-family-toggle" aria-expanded="false" data-acc-toggle>
                             <?php echo esc_html($range['name']); ?>
                         </button>
-                        <div class="mobile-family-panel" <?php echo 0 === $index ? '' : 'hidden'; ?> data-acc-panel>
+                        <div class="mobile-family-panel" hidden data-acc-panel>
                             <a href="<?php echo esc_url($range['url']); ?>">All <?php echo esc_html($range['name']); ?></a>
                             <?php foreach ($range['children'] as $child) : ?>
                                 <a href="<?php echo esc_url($child['url']); ?>"><?php echo esc_html($child['name']); ?></a>
+                                <?php foreach ($child['products'] ?? array() as $product) : ?>
+                                    <a class="mobile-product-link" href="<?php echo esc_url($product['url']); ?>">
+                                        <?php echo esc_html($product['model'] ? $product['model'] . ' — ' : ''); ?><?php echo esc_html($product['name']); ?>
+                                    </a>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -168,5 +175,56 @@ function hc_render_products_mobile($item, $active) {
             </div>
         <?php endif; ?>
     </div>
+    <?php
+}
+
+function hc_render_catalog_bar() {
+    $ranges = hc_catalog_explorer_tree();
+    if (! $ranges) {
+        $ranges = hc_catalog_display_tree();
+    }
+    if (! $ranges) {
+        return;
+    }
+    ?>
+    <nav class="catalog-bar" aria-label="Product categories">
+        <div class="catalog-bar-track">
+            <?php foreach ($ranges as $range) : ?>
+                <div class="catalog-bar-item">
+                    <a class="catalog-bar-link" href="<?php echo esc_url($range['url']); ?>">
+                        <?php echo esc_html($range['name']); ?>
+                    </a>
+                    <div class="catalog-drop" role="region" aria-label="<?php echo esc_attr($range['name'] . ' groups'); ?>">
+                        <ul>
+                            <?php foreach ($range['children'] as $child) : ?>
+                                <li>
+                                    <a class="catalog-drop-group" href="<?php echo esc_url($child['url']); ?>">
+                                        <?php echo esc_html($child['name']); ?>
+                                    </a>
+                                    <?php if (! empty($child['products'])) : ?>
+                                        <ul class="catalog-drop-series">
+                                            <?php foreach ($child['products'] as $product) : ?>
+                                                <li>
+                                                    <a href="<?php echo esc_url($product['url']); ?>">
+                                                        <?php echo esc_html($product['name']); ?>
+                                                        <?php if (! empty($product['model'])) : ?>
+                                                            <span><?php echo esc_html($product['model']); ?></span>
+                                                        <?php endif; ?>
+                                                    </a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <a class="catalog-drop-foot" href="<?php echo esc_url($range['url']); ?>">
+                            All <?php echo esc_html($range['name']); ?> →
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </nav>
     <?php
 }

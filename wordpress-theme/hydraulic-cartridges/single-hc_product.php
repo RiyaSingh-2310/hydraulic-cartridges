@@ -141,9 +141,13 @@ hc_page_hero($product['category'] ?: 'Product', $product['name'], $product['shor
                             <strong><?php echo esc_html($product['cavity'] ?: '—'); ?></strong>
                         </div>
                     </div>
-                    <div class="hero-actions">
-                        <?php hc_btn(hc_quote_url($product['slug']), 'Request a Quote'); ?>
-                        <?php hc_btn(hc_page_url('contact'), 'Speak to engineering', 'outline'); ?>
+                    <div class="detail-buy">
+                        <?php hc_qty_control(1); ?>
+                        <div class="hero-actions" data-product-actions>
+                            <?php hc_add_to_cart_button($product); ?>
+                            <?php hc_btn(hc_quote_url($product['slug']), 'Request a Quote', 'outline'); ?>
+                            <?php hc_btn(hc_page_url('contact'), 'Speak to engineering', 'ghost'); ?>
+                        </div>
                     </div>
                 </div>
             </div>

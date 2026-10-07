@@ -112,6 +112,75 @@ function hc_catalog_display_tree() {
     return $out;
 }
 
+function hc_catalog_explorer_tree() {
+    static $cached = null;
+    if (null !== $cached) {
+        return $cached;
+    }
+
+    $tree     = hc_catalog_display_tree();
+    $by_group = array();
+
+    $query = new WP_Query(array(
+        'post_type'      => 'hc_product',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+        'orderby'        => 'menu_order title',
+        'order'          => 'ASC',
+        'no_found_rows'  => true,
+    ));
+    foreach ($query->posts as $post) {
+        $terms = get_the_terms($post->ID, hc_family_taxonomy());
+        if (! $terms || is_wp_error($terms)) {
+            continue;
+        }
+        $item = array(
+            'name'  => $post->post_title,
+            'url'   => get_permalink($post),
+            'model' => (string) get_post_meta($post->ID, '_hc_model', true),
+        );
+        foreach ($terms as $term) {
+            if ((int) $term->parent > 0) {
+                $by_group[ $term->slug ][] = $item;
+            }
+        }
+    }
+    wp_reset_postdata();
+
+    if (! $by_group) {
+        foreach (hc_catalog_blueprint() as $family) {
+            foreach ($family['children'] as $child) {
+                $items = array();
+                foreach ($child['products'] ?? array() as $product) {
+                    $items[] = array(
+                        'name'  => $product['name'],
+                        'model' => $product['model'] ?? '',
+                        'url'   => home_url(user_trailingslashit('products/' . $family['slug'] . '/' . $child['slug'] . '/' . $product['slug'])),
+                    );
+                }
+                if (! $items) {
+                    $items[] = array(
+                        'name'  => $child['name'],
+                        'model' => '',
+                        'url'   => hc_family_url_by_slug($child['slug']),
+                    );
+                }
+                $by_group[ $child['slug'] ] = $items;
+            }
+        }
+    }
+
+    foreach ($tree as &$family) {
+        foreach ($family['children'] as &$child) {
+            $child['products'] = $by_group[ $child['slug'] ] ?? array();
+        }
+    }
+    unset($family, $child);
+
+    $cached = $tree;
+    return $cached;
+}
+
 function hc_term_intro($term) {
     if (! $term) {
         return '';
@@ -201,7 +270,11 @@ function hc_listing_card($product) {
                 <?php if ($product['pressure']) : ?><span><?php echo esc_html($product['pressure']); ?></span><?php endif; ?>
                 <?php if ($product['flow']) : ?><span><?php echo esc_html($product['flow']); ?></span><?php endif; ?>
             </div>
-            <a class="explore-link" href="<?php echo esc_url($product['permalink']); ?>">View details →</a>
+            <p class="cart-price">On request</p>
+            <div class="product-card-actions" data-product-actions>
+                <a class="btn btn-outline" href="<?php echo esc_url($product['permalink']); ?>">View details</a>
+                <?php hc_add_to_cart_button($product); ?>
+            </div>
         </div>
     </article>
     <?php

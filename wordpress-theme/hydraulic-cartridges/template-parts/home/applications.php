@@ -3,7 +3,7 @@
     <div class="container">
         <?php
         hc_section_header(
-            'Industries',
+            'Featured solutions',
             'Where the circuit lives',
             'Cartridge valves earn their place on machines that move load, hold pressure, and run without drama across shifts.',
             true

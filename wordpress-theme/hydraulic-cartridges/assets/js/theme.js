@@ -82,6 +82,14 @@
       }
     });
   });
+  document.querySelectorAll('[data-acc-multi] [data-acc-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const panel = button.parentElement?.querySelector('[data-acc-panel]');
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (panel) panel.hidden = open;
+    });
+  });
   document.querySelectorAll('[data-acc-group]').forEach((group) => {
     group.querySelectorAll('[data-acc-toggle]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -102,7 +110,9 @@
   document.querySelectorAll('.mega-explorer').forEach((explorer) => {
     const families = [...explorer.querySelectorAll('[data-mega-family]')];
     const panels = [...explorer.querySelectorAll('[data-mega-panel]')];
-    const show = (slug) => {
+    const groups = [...explorer.querySelectorAll('[data-mega-group]')];
+    const listings = [...explorer.querySelectorAll('[data-mega-products]')];
+    const showFamily = (slug) => {
       families.forEach((el) => el.classList.toggle('is-active', el.getAttribute('data-mega-family') === slug));
       panels.forEach((el) => {
         const on = el.getAttribute('data-mega-panel') === slug;
@@ -110,9 +120,21 @@
         el.hidden = !on;
       });
     };
+    const showGroup = (key) => {
+      groups.forEach((el) => el.classList.toggle('is-active', el.getAttribute('data-mega-group') === key));
+      listings.forEach((el) => {
+        const on = el.getAttribute('data-mega-products') === key;
+        el.classList.toggle('is-active', on);
+        el.hidden = !on;
+      });
+    };
     families.forEach((el) => {
-      el.addEventListener('mouseenter', () => show(el.getAttribute('data-mega-family')));
-      el.addEventListener('focus', () => show(el.getAttribute('data-mega-family')));
+      el.addEventListener('mouseenter', () => showFamily(el.getAttribute('data-mega-family')));
+      el.addEventListener('focus', () => showFamily(el.getAttribute('data-mega-family')));
+    });
+    groups.forEach((el) => {
+      el.addEventListener('mouseenter', () => showGroup(el.getAttribute('data-mega-group')));
+      el.addEventListener('focus', () => showGroup(el.getAttribute('data-mega-group')));
     });
   });
 })();

@@ -23,3 +23,4 @@ require_once $hc_dir . '/inc/visuals.php';
 require_once $hc_dir . '/inc/catalog-data.php';
 require_once $hc_dir . '/inc/catalog.php';
 require_once $hc_dir . '/inc/seed-catalog.php';
+require_once $hc_dir . '/inc/commerce.php';
